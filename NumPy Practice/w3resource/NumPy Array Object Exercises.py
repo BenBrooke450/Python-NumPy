@@ -9,6 +9,7 @@ Write a NumPy program to convert a list
 of numeric values into a one-dimensional NumPy array.
 """
 import numpy as np
+from numpy.array_api import astype
 
 list1 = [1,2,3,4,5,6,7,8,9]
 
@@ -579,7 +580,186 @@ print(list(x.flat))
 
 ####################################################################
 
+"""
+38. Reshape Array (Keep Data)
+
+Write a NumPy program to create another shape from an array without changing its data.
+"""
+
 x = x.reshape(3,3)
 print(x.shape)
 #(3,3)
+
+
+
+
+
+####################################################################
+
+
+"""
+39. Change Array Data Type
+
+Write a NumPy program to change an array's data type.
+"""
+
+####################################################################
+
+"""
+40. 3x5 Array Filled with 2s
+
+Write a NumPy program to create a new array of 3*5, filled with 2.
+"""
+
+print(np.full((3,5),2))
+"""
+[[2 2 2 2 2]
+ [2 2 2 2 2]
+ [2 2 2 2 2]]
+"""
+
+
+####################################################################
+
+
+"""
+42. 3D Array with Diagonal Ones
+
+Write a NumPy program to create a 3-D array with ones on a diagonal and zeros elsewhere.
+"""
+
+print(np.identity(3))
+"""
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+"""
+
+
+
+####################################################################
+
+"""
+43. 2D Array with Custom Diagonal Values
+
+Write a NumPy program to create a 2-D array whose diagonal equals [4, 5, 6, 8] and 0's elsewhere.
+
+"""
+
+print(np.diagflat([1,2,3,4,5]))
+"""
+[[1 0 0 0 0]
+ [0 2 0 0 0]
+ [0 0 3 0 0]
+ [0 0 0 4 0]
+ [0 0 0 0 5]]
+"""
+
+
+
+####################################################################
+
+"""
+45. 30 Evenly Spaced Values (2.5?6.5)
+
+Write a NumPy program to create a 1-D array of 30 evenly spaced elements between 2.5 and 6.5, inclusive.
+"""
+
+
+print(np.linspace(2.5, 6.5, 10))
+
+"""
+[2.5        2.94444444 3.38888889 3.83333333 4.27777778 4.72222222
+ 5.16666667 5.61111111 6.05555556 6.5       ]
+"""
+
+####################################################################
+
+
+"""
+46. 20 Log-Spaced Values (2?5)
+
+Write a NumPy program to create a 1-D array of 20 elements spaced evenly on a log scale between 2. and 5., exclusive.
+"""
+
+
+print(np.logspace(2.,5.,10))
+"""
+[   100.            215.443469      464.15888336   1000.
+   2154.43469003   4641.58883361  10000.          21544.34690032
+  46415.88833613 100000.        ]
+"""
+
+
+####################################################################
+
+"""
+48. Create 2D Array with Specific Values
+
+Write a NumPy program to create an array like the one below.
+
+"""
+
+print(np.triu(np.arange(1, 10)))
+
+"""
+[[1 2 3 4 5 6 7 8 9]
+ [0 2 3 4 5 6 7 8 9]
+ [0 0 3 4 5 6 7 8 9]
+ [0 0 0 4 5 6 7 8 9]
+ [0 0 0 0 5 6 7 8 9]
+ [0 0 0 0 0 6 7 8 9]
+ [0 0 0 0 0 0 7 8 9]
+ [0 0 0 0 0 0 0 8 9]
+ [0 0 0 0 0 0 0 0 9]]
+"""
+
+
+print(np.triu(np.arange(1, 4),-1))
+"""
+[[1 2 3]
+ [1 2 3]
+ [0 2 3]]
+"""
+
+
+####################################################################
+
+
+"""
+49. Collapse 3D Array to 1D
+
+Write a NumPy program to collapse a 3-D array into a one-dimensional array.
+"""
+
+x = np.identity(3)
+
+print(np.ravel(x,order="F"))
+#[1. 0. 0. 0. 1. 0. 0. 0. 1.]
+
+
+
+####################################################################
+
+"""
+50. Find 4th Element of Array
+
+Write a NumPy program to find the 4th element of a specified array.
+"""
+
+print(x[1][0])
+#0.0
+
+
+
+####################################################################
+
+
+
+
+
+
+
+
+
 
