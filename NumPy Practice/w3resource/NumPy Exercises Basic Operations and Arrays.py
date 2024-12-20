@@ -9,6 +9,7 @@ Write a NumPy program to convert a list
 of numeric values into a one-dimensional NumPy array.
 """
 import numpy as np
+from astropy.units.quantity_helper.function_helpers import concatenate
 from numpy.array_api import astype
 
 list1 = [1,2,3,4,5,6,7,8,9]
@@ -473,6 +474,7 @@ Sample array: [[2,5],[4,4]]
 """
 
 x = np.array(([[2,5],[4,4]]))
+
 print(np.sort(x,0))
 """
 [[2 4]
@@ -752,6 +754,437 @@ print(x[1][0])
 
 
 ####################################################################
+
+"""
+51. Change Two Array Axes
+
+Write a NumPy program to change two array axes.
+"""
+
+x = np.array([[1,2,3]])
+
+print(x.reshape(3,1))
+"""
+[[1]
+ [2]
+ [3]]
+"""
+
+
+####################################################################
+
+"""
+52. Move Array Axes to Alternate Positions
+
+Write a NumPy program to move array axes to alternate positions. Other axes remain in their original order.
+"""
+
+
+x = np.zeros((2, 3, 4))
+print(x)
+"""
+[[[0. 0. 0. 0.]
+  [0. 0. 0. 0.]
+  [0. 0. 0. 0.]]
+
+ [[0. 0. 0. 0.]
+  [0. 0. 0. 0.]
+  [0. 0. 0. 0.]]]
+"""
+
+print(np.moveaxis(x, 0, -1).shape)
+#(3, 4, 2)
+
+
+print(np.moveaxis(x, -1, 0).shape)
+#(4, 2, 3)
+
+"""
+Explanation:
+
+x = np.zeros((2, 3, 4)): This line creates a 3D
+    array x with the given shape (2, 3, 4), filled with zeros.
+
+print(np.moveaxis(x, 0, -1).shape): The np.moveaxis() 
+    function takes three arguments: the input array, 
+    the source axis, and the destination axis. In this 
+    case, it moves axis 0 (the first axis) to the last 
+    position (-1). As a result, the shape of the new 
+    array is (3, 4, 2).
+
+print(np.moveaxis(x, -1, 0).shape): This line moves 
+    the last axis (-1) to the first position (0). 
+    As a result, the shape of the new array is (4, 2, 3).
+"""
+
+####################################################################
+
+"""
+53. Move Axis to Desired Position
+
+Write a NumPy program to move the specified axis backwards, until it lies in a given position.
+"""
+
+x = np.zeros((2,3,4,5))
+
+np.moveaxis(x,2,3)
+
+np.moveaxis(x,1,2)
+
+print(np.moveaxis(x,3,1).shape)
+#2534
+
+####################################################################
+
+"""
+54. Inputs as Arrays with 1+ Dimensions
+
+Write a NumPy program to convert specified inputs into arrays with at least one dimension.
+"""
+
+print(np.array(12,dtype="f"))
+#12.0
+
+print(np.arange(6.0).reshape(2,3))
+"""
+[[0. 1. 2.]
+ [3. 4. 5.]]
+"""
+
+print(np.atleast_1d(1, [3, 4]))
+#[array([1]), array([3, 4])]
+
+
+
+####################################################################
+
+"""
+55. Inputs as Arrays with 2D/3D Views
+
+Write a NumPy program to view inputs as arrays with
+    at least two dimensions, three dimensions.
+"""
+
+
+print(np.atleast_1d(10))
+#[10]
+
+print((np.arange(4).reshape(2,2)).astype("f"))
+"""
+[[0. 1.]
+ [2. 3.]]
+"""
+
+
+####################################################################.
+
+"""
+56. Insert New Axis in 2D Array
+
+Write a NumPy program to insert a new axis within a 2-D array.
+
+2-D array of shape (3, 4).
+"""
+
+x = np.arange(12)
+
+x = x.reshape(3,4)
+
+
+y = np.expand_dims(x, axis=1).shape
+
+print(y)
+#(3, 1, 4)
+
+
+
+
+
+
+####################################################################.
+
+#https://www.machinelearningplus.com/python/101-numpy-exercises-python/
+
+
+"""
+3. How to create a boolean array?
+"""
+
+print(np.full((3,3),True))
+"""
+[[ True  True  True]
+ [ True  True  True]
+ [ True  True  True]]
+"""
+
+
+
+####################################################################.
+
+
+"""
+4. How to extract items that satisfy a given
+    condition from 1D array?
+"""
+
+arr = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+x = np.where(arr % 2 != 0)
+
+print(x)
+#(array([1, 3, 5, 7, 9]),)
+
+
+
+
+#Input
+arr = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+#Solution
+arr[arr % 2 == 1]
+
+#> array([1, 3, 5, 7, 9])
+
+
+####################################################################.
+
+
+"""
+5. How to replace items that satisfy
+ a condition with another value in numpy array?
+"""
+arr = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+for i, nums in np.ndenumerate(arr):
+    if nums % 2 != 0:
+        arr[i] = -1
+
+print(arr)
+
+
+
+
+
+
+arr[arr % 2 == 1] = -1
+arr
+#> array([ 0, -1,  2, -1,  4, -1,  6, -1,  8, -1])
+
+
+
+
+####################################################################.
+
+
+"""
+6. How to replace items that satisfy 
+    a condition without affecting the original array?
+"""
+
+arr = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+out = arr.copy()
+
+out[out % 2 == 1] = -1
+
+print(out)
+#[ 0 -1  2 -1  4 -1  6 -1  8 -1]
+
+
+
+
+
+arr = np.arange(10)
+out = np.where(arr % 2 == 1, -1, arr)
+
+print(arr)
+#[0 1 2 3 4 5 6 7 8 9]
+
+print(out)
+#array([ 0, -1,  2, -1,  4, -1,  6, -1,  8, -1])
+
+
+
+####################################################################.
+
+
+"""
+7. How to reshape an array?
+"""
+
+
+x = np.arange(10)
+print(x)
+
+print(x.reshape(2,5))
+"""
+[[0 1 2 3 4]
+ [5 6 7 8 9]]
+"""
+
+
+
+
+arr = np.arange(10)
+
+arr.reshape(2, -1)  # Setting to -1 automatically decides the number of cols
+
+#array([[0, 1, 2, 3, 4],
+#[5, 6, 7, 8, 9]])
+
+
+####################################################################.
+
+"""
+8. How to stack two arrays vertically?
+"""
+
+a = np.arange(10).reshape(2,-1)
+b = np.repeat(1, 10).reshape(2,-1)
+
+print(np.vstack((a,b)))
+"""
+[[0 1 2 3 4]
+ [5 6 7 8 9]
+ [1 1 1 1 1]
+ [1 1 1 1 1]]
+"""
+
+
+
+
+####################################################################.
+
+"""
+9. How to stack two arrays horizontally?
+"""
+
+a = np.arange(10).reshape(2,-1)
+b = np.repeat(1, 10).reshape(2,-1)
+
+print(np.hstack((a,b)))
+
+"""
+[[0 1 2 3 4 1 1 1 1 1]
+ [5 6 7 8 9 1 1 1 1 1]]
+"""
+
+
+
+####################################################################.
+
+"""
+10. How to generate custom sequences in numpy without hardcoding?
+"""
+a = np.array([1,2,3])
+
+np.repeat(a,3)
+np.tile(a,3)
+
+print(np.concatenate([np.repeat(a,3),np.tile(a,3)]))
+#[1 1 1 2 2 2 3 3 3 1 2 3 1 2 3 1 2 3]
+
+
+####################################################################.
+
+"""
+11. How to get the common items between two python numpy arrays?
+"""
+
+a = np.array([1,2,3,2,3,4,3,4,5,6])
+b = np.array([7,2,10,2,7,4,9,4,9,8])
+
+
+print(np.intersect1d(a,b))
+#[2 4]
+
+
+
+
+
+
+####################################################################.
+
+"""
+12. How to remove from one array those items that exist in another?
+"""
+
+a = np.array([1,2,3,4,5])
+b = np.array([5,6,7,8,9])
+
+print(np.setdiff1d(a,b))
+#[1 2 3 4]
+
+
+
+
+
+####################################################################.
+
+"""
+13. How to get the positions where elements of two arrays match?
+"""
+
+a = np.array([1,2,3,2,3,4,3,4,5,6])
+b = np.array([7,2,10,2,7,4,9,4,9,8])
+
+np.where(a == b)
+# (array([1, 3, 5, 7]),)
+
+
+
+
+
+
+####################################################################.
+
+"""
+14. How to extract all numbers between a given range from a numpy array?
+"""
+
+a = np.array([2, 6, 1, 9, 10, 3, 27])
+
+ab = np.where((5 <= a) & (10 >= a))
+
+print(a[ab])
+#[ 6  9 10]
+
+
+
+
+
+####################################################################.
+
+"""
+15. How to make a python function that handles scalars to work on numpy arrays?
+"""
+
+a = np.array([5, 7, 9, 8, 6, 4, 5])
+b = np.array([6, 3, 4, 8, 9, 7, 1])
+
+
+def maxx(a, b):
+
+    array_one = np.max(np.concatenate((a,b)))
+
+    return array_one
+
+print(maxx(a, b))
+#9
+
+
+
+####################################################################.
+
+"""
+16. How to swap two columns in a 2d numpy array?
+"""
+
+
+
+
+
+
 
 
 
