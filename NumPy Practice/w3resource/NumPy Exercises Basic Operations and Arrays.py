@@ -9,8 +9,6 @@ Write a NumPy program to convert a list
 of numeric values into a one-dimensional NumPy array.
 """
 import numpy as np
-from astropy.units.quantity_helper.function_helpers import concatenate
-from numpy.array_api import astype
 
 list1 = [1,2,3,4,5,6,7,8,9]
 
@@ -1177,21 +1175,161 @@ print(maxx(a, b))
 ####################################################################.
 
 """
-16. How to swap two columns in a 2d numpy array?
+18. How to reverse the rows of a 2D array?
+"""
+
+arr = np.arange(9).reshape(3,3)
+
+print(arr)
+"""
+[[0 1 2]
+ [3 4 5]
+ [6 7 8]]
+"""
+
+print(arr[::-1])
+"""
+[[6 7 8]
+ [3 4 5]
+ [0 1 2]]
+"""
+
+
+
+####################################################################.
+
+"""
+19. How to reverse the columns of a 2D array?
+"""
+
+print(arr[: , ::-1])
+"""
+[[2 1 0]
+ [5 4 3]
+ [8 7 6]]
+"""
+
+
+####################################################################.
+
+"""
+20. How to create a 2D array containing random floats between 5 and 10?
+"""
+
+
+arr = np.random.randint(5,10,size =(5,3))
+
+
+print(arr.astype("f"))
+"""
+[[7. 5. 8.]
+ [5. 8. 5.]
+ [9. 8. 6.]
+ [6. 7. 5.]
+ [8. 7. 8.]]
+"""
+
+
+rand_arr = np.random.uniform(5,10, size=(5,3))
+
+print(rand_arr)
+
+"""
+[[ 8.50061025  9.10531502  6.85867783]
+[ 9.76262069  9.87717411  7.13466701]
+[ 7.48966403  8.33409158  6.16808631]
+[ 7.75010551  9.94535696  5.27373226]
+[ 8.0850361   5.56165518  7.31244004]]
+"""
+
+
+####################################################################.
+
+"""
+21. How to print only 3 decimal places in python numpy array?
+"""
+
+rand_arr = np.random.random((5,3))
+
+print(rand_arr[:,:2])
+"""
+[[0.76214988 0.05112159]
+ [0.30363454 0.61278645]
+ [0.42235013 0.14414753]
+ [0.55265739 0.3119435 ]
+ [0.71265938 0.06866495]]
+"""
+
+
+print(rand_arr[:][:2])
+"""
+[[0.60903343 0.03180867 0.62505238]
+ [0.78169961 0.57101146 0.57256635]]
+"""
+
+
+# Limit to 3 decimal places
+np.set_printoptions(precision=3)
+
+print(rand_arr[:4])
+
+"""
+
+array([[ 0.443,  0.109,  0.97 ],
+       [ 0.388,  0.447,  0.191],
+       [ 0.891,  0.474,  0.212],
+       [ 0.609,  0.518,  0.403]])
+       
 """
 
 
 
 
+####################################################################.
+
+"""
+47. From the array a, replace all values greater than 30 to 30 and less than 10 to 10.
+"""
+
+a = np.random.uniform(1,50, 20)
+
+print(np.where(a < 10, 10, np.where(a > 30, 30, a)))
+"""
+[10.    30.    23.209 10.    14.455 29.755 30.    30.    30.    10.
+ 10.    15.415 26.519 30.    30.    19.497 30.    28.131 30.    10.   ]
+"""
 
 
 
+####################################################################.
+
+"""
+48. How to get the positions of top n values from a numpy array?
+"""
+
+a = np.random.uniform(1,50, 20)
+
+print(a.argsort()[:5])
+
+# Python program explaining
+# argpartition() function
 
 
 
+####################################################################.
+
+"""
+50. How to convert an array of arrays into a flat 1d array?
+"""
+
+arr1 = np.arange(3)
+arr2 = np.arange(3,7)
+arr3 = np.arange(7,10)
 
 
 
+print(np.concatenate(([arr1] + [arr2] + [arr3])))
+#[0 1 2 3 4 5 6 7 8 9]
 
 
 
