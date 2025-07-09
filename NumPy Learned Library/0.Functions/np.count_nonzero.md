@@ -5,7 +5,7 @@ import numpy as np
 
 class Solution:
 
-    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+    def containsNearbyDuplicate(self, nums: list[int], k: int) -> bool:
 
         t = 0
 
@@ -74,6 +74,9 @@ count_row_wise = np.count_nonzero(matrix == 3, axis=1)
 print('Occurrences of "3" in each row:', count_row_wise)
 
  
+
+
+
 
 # Count occurrences of '3' in each column
 
