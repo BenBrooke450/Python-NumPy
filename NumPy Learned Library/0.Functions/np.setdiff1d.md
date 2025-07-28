@@ -31,4 +31,6 @@ gfg = geek.setdiff1d(arr1, arr2)
 print (gfg)
 
 #[4 5 6]
+
  ```
+![img_2.png](img_2.png)
