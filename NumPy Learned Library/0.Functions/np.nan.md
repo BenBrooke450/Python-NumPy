@@ -1,24 +1,17 @@
 
-### Using numpy.where():
-
-The numpy.where() function is useful for finding the indices of elements that satisfy a certain condition.
-
-
-
 ```python
 import numpy as np
 
-# Example array
-arr = np.array([10, 20, 30, 40, 50])
+# Create a NumPy array
+array = np.array([1, 2, 3, 4, 5])
 
-# Find the index of elements greater than 25
-indices = np.where(arr > 25)
-print(indices)  # Output: (array([2, 3, 4]),)
+# Place a NaN value at a specific index, e.g., index 2
+array[2] = np.nan
+
+print(array)
 ```
 
-
 <br><br><br>
-
 
 
 ```python
