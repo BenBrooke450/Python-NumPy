@@ -14,7 +14,6 @@ import numpy as geek
    
 
 arr1 = geek.array([1, 1, 2, 3, 4])
-
 arr2 = geek.array([2, 1, 4, 6])
 
    

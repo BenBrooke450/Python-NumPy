@@ -16,14 +16,11 @@ np.setdiff1d(arr1, arr2, assume_unique=True)
 
 import numpy as geek 
 
-  
 
 arr1 = [5, 6, 2, 3, 4]
-
 arr2 = [1, 2, 3]
 
   
-
 gfg = geek.setdiff1d(arr1, arr2)
 
   
